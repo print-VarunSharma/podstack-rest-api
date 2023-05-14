@@ -1,0 +1,48 @@
+version: 2.1
+
+orbs:
+    node: circleci/node@4.7
+
+executors:
+    node-16-14-2:
+        description: |
+            Single Docker container with Node 16.14.2-slim and Cypress dependencies
+            see https://github.com/cypress-io/cypress-docker-images/tree/master/base.
+            Use example: `executor: cypress/base-16-14-2-slim`.
+        docker:
+            - image: cimg/node:16.14.2
+
+jobs:
+    build_api:
+        working_directory: ~/src
+        executor: node-16-14-2
+        steps:
+            - checkout
+            - node/install-npm
+            - node/install-packages:
+                  app-dir: ~/src
+                  cache-path: node_modules
+                  override-ci-command: npm i
+            - persist_to_workspace:
+                  root: .
+                  paths:
+                      - .
+
+    test_api:
+        docker:
+            - image: cimg/node:16.14.2
+        steps:
+            - attach_workspace:
+                  at: .
+            - run:
+                  name: API Tests
+                  command: npm run test:ci
+
+workflows:
+    version: 2
+    build_and_test:
+        jobs:
+            - build_api
+            - test_api:
+                  requires:
+                      - build_api

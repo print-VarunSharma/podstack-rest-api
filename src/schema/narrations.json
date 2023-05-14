@@ -1,0 +1,105 @@
+{
+    "type": "object",
+    "properties": {
+        "userId": {
+            "type": "string"
+        },
+        "title": {
+            "type": "string",
+            "nullable": true
+        },
+        "narrationMethod": {
+            "type": "string"
+        },
+        "sourceUrl": {
+            "type": "string",
+            "format": "uri"
+        },
+        "sourceType": {
+            "type": "string"
+        },
+        "image": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+        },
+        "sourceLanguage": {
+            "type": "string",
+            "nullable": true
+        },
+        "category": {
+            "type": "string",
+            "nullable": true
+        },
+
+        "publishDate": {
+            "type": "string",
+            "format": "date-time"
+        },
+        "siteName": {
+            "type": "string",
+            "nullable": true
+        },
+        "version": {
+            "type": "number"
+        },
+        "podcastChannelId": {
+            "type": "string"
+        },
+        "audio": {
+            "type": "string",
+            "nullable": true
+        },
+        "duration": {
+            "type": "number",
+            "nullable": true
+        },
+        "narrationSettings": {
+            "type": "object",
+            "properties": {
+                "titleVoice": {
+                    "type": "string",
+                    "nullable": true
+                },
+
+                "bodyVoice": {
+                    "type": "string",
+                    "nullable": true
+                }
+            }
+        },
+        "status": {
+            "type": "string",
+            "enum": ["SUCCESS", "FAILURE", "PENDING", "DEBUG"]
+        },
+        "metadata": {
+            "type": "object",
+            "nullable": true
+        },
+        "externalAppData": {
+            "type": "object",
+            "nullable": true
+        },
+        "errorCode": {
+            "type": "number",
+            "nullable": true
+        },
+        "stats": {
+            "type": "object",
+            "nullable": true
+        }
+    },
+    "required": [
+        "audio",
+        "status",
+        "narrationMethod",
+        "sourceUrl",
+        "title",
+        "sourceLanguage",
+        "category",
+        "publishDate",
+        "siteName",
+        "narrationSettings"
+    ],
+    "additionalProperties": false
+}

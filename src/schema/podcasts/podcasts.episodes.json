@@ -1,0 +1,13 @@
+{
+    "type": "object",
+    "properties": {
+        "channelId": {
+            "type": "string"
+        },
+        "narrationId": {
+            "type": "string"
+        }
+    },
+    "required": ["channelId", "narrationId"],
+    "additionalProperties": true
+}

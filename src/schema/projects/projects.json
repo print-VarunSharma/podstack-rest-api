@@ -1,0 +1,47 @@
+{
+    "type": "object",
+    "properties": {
+        "groupId": {
+            "type": "string"
+        },
+        "name": {
+            "type": "string"
+        },
+        "routeIdentifier": {
+            "type": "string"
+        },
+        "wordList": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "additionalProperties": {
+                    "type": "string"
+                }
+            }
+        },
+        "widgetSettings": {
+            "type": "object",
+            "properties": {
+                "primaryColor": {
+                    "type": "string",
+                    "pattern": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+                },
+                "primaryPresetTheme": {
+                    "type": "string",
+                    "enum": ["yingyang", "dark", "light", "transparent"]
+                },
+                "playAppLinkIncluded": { "type": "boolean" },
+                "playAppLinkText": { "type": "string", "nullable": true },
+                "playAppLink": { "type": "string", "format": "uri", "nullable": true }
+            }
+        },
+        "subscriptionLink": {
+            "type": "string",
+            "format": "uri",
+            "nullable": true
+        },
+        "isEnabled": { "type": "boolean" }
+    },
+    "required": ["name", "routeIdentifier", "wordList", "widgetSettings", "subscriptionLink", "isEnabled"],
+    "additionalProperties": false
+}

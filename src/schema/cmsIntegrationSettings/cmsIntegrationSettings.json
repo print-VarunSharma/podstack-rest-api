@@ -1,0 +1,27 @@
+{
+    "type": "object",
+    "properties": {
+        "projectId": {
+            "type": "string"
+        },
+        "method": {
+            "type": "string",
+            "enum": ["RSS"]
+        },
+        "narrationSettingsId": {
+            "type": "string"
+        },
+        "options": {
+            "type": "object",
+            "properties": {
+                "url": {
+                    "type": "string",
+                    "format": "uri"
+                }
+            }
+        },
+        "isEnabled": { "type": "boolean" }
+    },
+    "required": ["method", "narrationSettingsId", "options", "isEnabled"],
+    "additionalProperties": false
+}
